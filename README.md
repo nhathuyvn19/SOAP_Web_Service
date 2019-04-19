@@ -28,13 +28,21 @@ Detail Infomation
  + Change http://model.dxc.com/xsd into http://impl.services.dxc.com in UserServiceStub.java in line
  
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","address").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","birthday").equals(reader.getName()))     
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","cellPhone").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","gender").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","id").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","identityCard").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","job").equals(reader.getName()))  
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","name").equals(reader.getName()))
+    
     if (reader.isStartElement() && new javax.xml.namespace.QName("http://model.dxc.com/xsd","nationality").equals(reader.getName()))
     
   
