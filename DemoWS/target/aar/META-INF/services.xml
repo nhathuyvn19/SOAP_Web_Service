@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="UserService">
+
+	<description>
+		Config WebService
+	</description>
+
+	<parameter name="ServiceClass">com.dxc.services.impl.UserService</parameter>
+	<parameter name="ServiceTCCL">composite</parameter>
+	<messageReceivers>
+		<messageReceiver
+			class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" mep="http://www.w3.org/ns/wsdl/in-only" />
+		<messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"
+			mep="http://www.w3.org/ns/wsdl/in-out" />
+	</messageReceivers>
+</service>

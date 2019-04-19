@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://impl.services.dxc.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://model.dxc.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://impl.services.dxc.com">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://model.dxc.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://impl.services.dxc.com">
+            <xs:import namespace="http://model.dxc.com/xsd"/>
+            <xs:element name="updateUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax22:User"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="insertUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="ax22:User"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:User"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllUser">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax22:User"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.dxc.com/xsd">
+            <xs:complexType name="User">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="birthday" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="cellPhone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gender" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="identityCard" type="xs:int"/>
+                    <xs:element minOccurs="0" name="job" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nationality" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="insertUserRequest">
+        <wsdl:part name="parameters" element="ns:insertUser"/>
+    </wsdl:message>
+    <wsdl:message name="getByIdRequest">
+        <wsdl:part name="parameters" element="ns:getById"/>
+    </wsdl:message>
+    <wsdl:message name="getByIdResponse">
+        <wsdl:part name="parameters" element="ns:getByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteUserRequest">
+        <wsdl:part name="parameters" element="ns:deleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="updateUserRequest">
+        <wsdl:part name="parameters" element="ns:updateUser"/>
+    </wsdl:message>
+    <wsdl:message name="getAllUserRequest">
+        <wsdl:part name="parameters" element="ns:getAllUser"/>
+    </wsdl:message>
+    <wsdl:message name="getAllUserResponse">
+        <wsdl:part name="parameters" element="ns:getAllUserResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="UserServicePortType">
+        <wsdl:operation name="insertUser">
+            <wsdl:input message="ns:insertUserRequest" wsaw:Action="urn:insertUser"/>
+        </wsdl:operation>
+        <wsdl:operation name="getById">
+            <wsdl:input message="ns:getByIdRequest" wsaw:Action="urn:getById"/>
+            <wsdl:output message="ns:getByIdResponse" wsaw:Action="urn:getByIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <wsdl:input message="ns:deleteUserRequest" wsaw:Action="urn:deleteUser"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateUser">
+            <wsdl:input message="ns:updateUserRequest" wsaw:Action="urn:updateUser"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUser">
+            <wsdl:input message="ns:getAllUserRequest" wsaw:Action="urn:getAllUser"/>
+            <wsdl:output message="ns:getAllUserResponse" wsaw:Action="urn:getAllUserResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UserServiceSoap11Binding" type="ns:UserServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="insertUser">
+            <soap:operation soapAction="urn:insertUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getById">
+            <soap:operation soapAction="urn:getById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="updateUser">
+            <soap:operation soapAction="urn:updateUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUser">
+            <soap:operation soapAction="urn:getAllUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="UserServiceSoap12Binding" type="ns:UserServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="insertUser">
+            <soap12:operation soapAction="urn:insertUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getById">
+            <soap12:operation soapAction="urn:getById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap12:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="updateUser">
+            <soap12:operation soapAction="urn:updateUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUser">
+            <soap12:operation soapAction="urn:getAllUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="UserServiceHttpBinding" type="ns:UserServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="insertUser">
+            <http:operation location="insertUser"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getById">
+            <http:operation location="getById"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <http:operation location="deleteUser"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="updateUser">
+            <http:operation location="updateUser"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUser">
+            <http:operation location="getAllUser"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="UserService">
+        <wsdl:port name="UserServiceHttpSoap11Endpoint" binding="ns:UserServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/UserService"/>
+        </wsdl:port>
+        <wsdl:port name="UserServiceHttpSoap12Endpoint" binding="ns:UserServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/UserService"/>
+        </wsdl:port>
+        <wsdl:port name="UserServiceHttpEndpoint" binding="ns:UserServiceHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/UserService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
